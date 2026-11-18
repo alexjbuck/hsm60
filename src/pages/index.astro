@@ -1,0 +1,64 @@
+---
+import Base from "../layouts/Base.astro";
+import home from "../data/home.json";
+import { BACKGROUNDS } from "../lib/lead.js";
+const { motto, hero, stats, mission, why, join } = home;
+---
+<Base>
+  <section class="hero" style={`--img: url(${hero.image})`}>
+    <div class="wrap">
+      <p class="motto">{motto}</p>
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1>{hero.title.replaceAll("-", "\u2011")}</h1>{/* non-breaking hyphen keeps "MH-60R" whole */}
+      <p>{hero.subtitle}</p>
+      <a class="btn" href="#join">{hero.cta}</a>
+    </div>
+  </section>
+
+  <div class="stats"><div class="wrap">
+    {stats.map((s) => <div class="stat"><strong>{s.value}</strong><span>{s.label}</span></div>)}
+  </div></div>
+
+  <section id="mission"><div class="wrap split">
+    <div>
+      <p class="eyebrow">The Mission</p>
+      <h2>{mission.title}</h2>
+      <p>{mission.body}</p>
+    </div>
+    <div class="photo"><img src={mission.image} alt="MH-60R Seahawk during a counter-drug operation at sea" loading="lazy" /></div>
+  </div></section>
+
+  <section class="alt"><div class="wrap split">
+    <div class="photo"><img src={why.image} alt="MH-60R Seahawk during a gunnery exercise off Jacksonville" loading="lazy" /></div>
+    <div>
+      <p class="eyebrow">The Squadron</p>
+      <h2>{why.title}</h2>
+      <div class="points">{why.points.map((p) => <div><h3>{p.title}</h3><p>{p.body}</p></div>)}</div>
+    </div>
+  </div></section>
+
+  <section id="join" class="join"><div class="wrap split">
+    <div>
+      <img class="join-patch" src="/images/patch.png" alt="HSM-60 Jaguars squadron patch" width="220" loading="lazy" />
+      <p class="eyebrow">Join the Jaguars</p>
+      <h2>{join.title}</h2>
+      <p>{join.body}</p>
+    </div>
+    <form class="lead" method="post" action="/api/leads">
+      <label class="full">Name <input name="name" required maxlength="120" autocomplete="name" /></label>
+      <label>Email <input name="email" type="email" required maxlength="200" autocomplete="email" /></label>
+      <label>Phone <input name="phone" type="tel" maxlength="40" autocomplete="tel" /></label>
+      <label class="full">Background
+        <select name="background"><option value="">Choose one</option>{BACKGROUNDS.map((b) => <option>{b}</option>)}</select>
+      </label>
+      <label class="full">Anything we should know? <textarea name="message" rows="4" maxlength="2000"></textarea></label>
+      <label class="hp" aria-hidden="true">Website <input name="website" tabindex="-1" autocomplete="off" /></label>
+      <p class="full privacy">
+        Voluntary. We use your name and contact info only so a squadron member can reach back out to you about joining HSM-60.
+        It is not shared outside the squadron and is deleted after 36 months, or sooner if you ask. Don't include your SSN,
+        date of birth, or other sensitive information. This is not an official Navy recruiting system; see <a href="https://www.navy.com/reserve">navy.com</a> for official recruiting.
+      </p>
+      <div class="full"><button class="btn" type="submit">Send</button></div>
+    </form>
+  </div></section>
+</Base>

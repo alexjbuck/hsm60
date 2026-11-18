@@ -1,0 +1,16 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+export async function getStaticPaths() {
+  return (await getCollection("onboarding")).map((g) => ({ params: { id: g.id }, props: { g } }));
+}
+const { g } = Astro.props;
+const { Content } = await render(g);
+---
+<Base title={`${g.data.title} | HSM-60 Onboarding`}>
+  <section class="page"><div class="wrap prose">
+    <p class="eyebrow"><a href="/onboarding">Onboarding</a></p>
+    <h1>{g.data.title}</h1>
+    <Content />
+  </div></section>
+</Base>

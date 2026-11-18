@@ -1,0 +1,67 @@
+# Pages CMS (https://pagescms.org) — web editor for non-technical users. Edits commit to git.
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: home
+    label: Home page
+    type: file
+    path: src/data/home.json
+    format: json
+    fields:
+      - { name: motto, label: Motto, type: string }
+      - name: hero
+        label: Hero
+        type: object
+        fields:
+          - { name: eyebrow, label: Small heading, type: string }
+          - { name: title, label: Headline, type: string }
+          - { name: subtitle, label: Subheading, type: text }
+          - { name: image, label: Background photo, type: image }
+          - { name: cta, label: Button text, type: string }
+      - name: stats
+        label: Stats bar
+        type: object
+        list: true
+        fields:
+          - { name: value, label: Big text, type: string }
+          - { name: label, label: Caption, type: string }
+      - name: mission
+        label: Mission section
+        type: object
+        fields:
+          - { name: title, type: string }
+          - { name: body, type: text }
+          - { name: image, type: image }
+      - name: why
+        label: Why the Jaguars section
+        type: object
+        fields:
+          - { name: title, type: string }
+          - name: points
+            type: object
+            list: true
+            fields:
+              - { name: title, type: string }
+              - { name: body, type: text }
+          - { name: image, type: image }
+      - name: join
+        label: Join form intro
+        type: object
+        fields:
+          - { name: title, type: string }
+          - { name: body, type: text }
+
+  - name: onboarding
+    label: Onboarding guides
+    type: collection
+    path: src/content/onboarding
+    filename: "{fields.title}.md"
+    view:
+      fields: [title, order]
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: summary, label: Card summary, type: string, required: true }
+      - { name: order, label: Sort order, type: number }
+      - { name: body, label: Content, type: rich-text }

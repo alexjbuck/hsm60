@@ -1,0 +1,15 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+const guides = (await getCollection("onboarding")).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="New Jaguars | HSM-60">
+  <section class="page"><div class="wrap">
+    <p class="eyebrow">Onboarding</p>
+    <h1>New to the squadron?</h1>
+    <p class="prose">Everything you need before you have CAC or Nautilus VD access. Public page: nothing sensitive here. Official command information lives on the <a href="https://www.airlant.usff.navy.mil/hsm60/">official HSM-60 website</a>.</p>
+    <div class="cards">
+      {guides.map((g) => <a class="card" href={`/onboarding/${g.id}`}><h3>{g.data.title}</h3><p>{g.data.summary}</p></a>)}
+    </div>
+  </div></section>
+</Base>

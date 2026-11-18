@@ -1,0 +1,51 @@
+{
+  "motto": "Legends Fly Here",
+  "hero": {
+    "eyebrow": "HSM-60 Jaguars · NAS Jacksonville, FL",
+    "title": "Fly the MH-60R. Keep your civilian life.",
+    "subtitle": "The Navy Reserve's helicopter maritime strike squadron. Real missions, real deployments, on a reserve schedule.",
+    "image": "/images/auf-counterdrug.jpg",
+    "cta": "Talk to us"
+  },
+  "stats": [
+    {
+      "value": "MH-60R",
+      "label": "Seahawk, the Navy's frontline maritime helicopter"
+    },
+    {
+      "value": "AUF",
+      "label": "Airborne Use of Force counter-narcotics mission"
+    },
+    {
+      "value": "JAX",
+      "label": "Based at Naval Air Station Jacksonville"
+    }
+  ],
+  "mission": {
+    "title": "Stop the go-fast before it reaches shore.",
+    "body": "DRAFT COPY. Replace with approved language. Jaguars detachments deploy aboard Navy and Coast Guard ships in the Caribbean and Eastern Pacific, where MH-60R crews with Airborne Use of Force capability find, chase, and stop drug-smuggling vessels so boarding teams can take the cargo.",
+    "image": "/images/auf-contraband-transfer.jpg"
+  },
+  "why": {
+    "title": "Why the Jaguars",
+    "points": [
+      {
+        "title": "Operational flying",
+        "body": "DRAFT. Not a training squadron. Crews deploy and fly the same mission set as the active fleet."
+      },
+      {
+        "title": "Reserve schedule",
+        "body": "DRAFT. Drill weekends and annual training built around your civilian career."
+      },
+      {
+        "title": "Jacksonville",
+        "body": "DRAFT. Beaches, no state income tax, and a big Navy town."
+      }
+    ],
+    "image": "/images/gunex-jacksonville.jpg"
+  },
+  "join": {
+    "title": "Interested? Leave your info.",
+    "body": "A Jaguar will reach out. No commitment, no recruiter script, just pilots and aircrew answering your questions."
+  }
+}

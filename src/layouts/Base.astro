@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+import { motto } from "../data/home.json";
+const OFFICIAL = "https://www.airlant.usff.navy.mil/hsm60/";
+const { title = "HSM-60 Jaguars", description = "HSM-60 Jaguars, Navy Reserve MH-60R squadron at NAS Jacksonville." } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/images/jaguar-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap">
+        <a class="brand" href="/"><img src="/images/jaguar-192.png" alt="" width="44" height="44" /><span>HSM-60 JAGUARS</span></a>
+        <nav>
+          <a class="wide" href="/#mission">Mission</a>
+          <a href="/onboarding">New Jaguars</a>
+          <a href="/#join">Join</a>
+        </nav>
+      </div>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <div class="wrap">
+        <img class="foot-patch" src="/images/patch-192.png" alt="HSM-60 Jaguars squadron patch" width="96" height="96" loading="lazy" />
+        <p class="motto">{motto}</p>
+        <p><strong>This is not an official U.S. Navy or Department of Defense website.</strong> It is maintained by members of HSM-60 in an unofficial capacity. Content here is not an official statement of,
+          and is not endorsed by, the U.S. Navy or DoD. The official HSM-60 website is <a href={OFFICIAL}>airlant.usff.navy.mil/hsm60</a>.</p>
+        <p>HSM-60 Jaguars · Naval Air Station Jacksonville, FL · Photos: U.S. Navy (public domain).</p>
+      </div>
+    </footer>
+  </body>
+</html>

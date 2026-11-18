@@ -1,0 +1,13 @@
+name = "hsm60"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "hsm60"
+database_id = "7370a127-c1c0-44fc-bece-c8700b65dead"
+
+[vars]
+# Cloudflare Zero Trust team domain + the Access application's AUD tag (see README).
+ACCESS_TEAM_DOMAIN = "REPLACE.cloudflareaccess.com"
+ACCESS_AUD = "REPLACE_WITH_AUD_TAG"

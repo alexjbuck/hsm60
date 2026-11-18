@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.dev.vars
+
+# Contains faces and a personal phone number; keep out of the repo.
+assets/selres-whiteboard.jpeg

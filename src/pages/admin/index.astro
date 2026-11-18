@@ -1,0 +1,58 @@
+---
+import Base from "../../layouts/Base.astro";
+import { STATUSES } from "../../lib/lead.js";
+---
+<Base title="Leads | HSM-60">
+  <section class="page"><div class="wrap">
+    <h1>Leads</h1>
+    <p><button class="btn" id="csv">Download CSV</button></p>
+    <p class="privacy">Contains PII. Don't forward exports or store them on personal cloud drives; delete downloaded CSVs when done. Leads auto-delete after 36 months.</p>
+    <div style="overflow-x:auto"><table id="leads"><thead><tr>
+      <th>Date</th><th>Name</th><th>Email</th><th>Phone</th><th>Background</th><th>Message</th><th>Status</th><th>Notes</th><th></th>
+    </tr></thead><tbody></tbody></table></div>
+  </div></section>
+  <style>
+    table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+    th, td { text-align: left; padding: .5rem; border-bottom: 1px solid rgba(255,255,255,.1); vertical-align: top; }
+    th { font-family: var(--display); color: var(--gold); text-transform: uppercase; }
+    td select, td textarea { padding: .4em; min-width: 140px; }
+  </style>
+  <script define:vars={{ STATUSES }}>
+    const tbody = document.querySelector("#leads tbody");
+    let leads = [];
+    const save = (l) => fetch("/api/admin/leads", { method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id: l.id, status: l.status, notes: l.notes }) });
+    const cell = (text) => { const td = document.createElement("td"); td.textContent = text; return td; }; // textContent: lead data is untrusted
+    fetch("/api/admin/leads").then((r) => r.json()).then((rows) => {
+      leads = rows;
+      for (const l of rows) {
+        const tr = document.createElement("tr");
+        tr.append(...[l.created_at.slice(0, 10), l.name, l.email, l.phone, l.background, l.message].map(cell));
+        const sel = document.createElement("select");
+        sel.append(...STATUSES.map((s) => new Option(s, s, false, s === l.status)));
+        sel.onchange = () => { l.status = sel.value; save(l); };
+        const notes = document.createElement("textarea");
+        notes.value = l.notes;
+        notes.onchange = () => { l.notes = notes.value; save(l); };
+        const a = document.createElement("td"); a.append(sel); const b = document.createElement("td"); b.append(notes);
+        const del = document.createElement("button");
+        del.textContent = "Delete";
+        del.onclick = async () => {
+          if (!confirm(`Permanently delete ${l.name}?`)) return;
+          const r = await fetch("/api/admin/leads", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id: l.id, delete: true }) });
+          if (r.ok) { tr.remove(); leads = leads.filter((x) => x !== l); }
+        };
+        const c = document.createElement("td"); c.append(del);
+        tr.append(a, b, c); tbody.append(tr);
+      }
+    });
+    document.getElementById("csv").onclick = () => {
+      const cols = ["created_at", "name", "email", "phone", "background", "message", "status", "notes"];
+      // Prefix formula-leading cells with ' so Excel doesn't execute them (CSV injection).
+      const esc = (v) => { let s = String(v ?? ""); if (/^[=+\-@]/.test(s)) s = "'" + s; return `"${s.replaceAll('"', '""')}"`; };
+      const csv = [cols.join(","), ...leads.map((l) => cols.map((c) => esc(l[c])).join(","))].join("\n");
+      const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([csv], { type: "text/csv" })), download: "hsm60-leads.csv" });
+      a.click();
+    };
+  </script>
+</Base>
