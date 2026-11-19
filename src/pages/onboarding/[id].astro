@@ -11,6 +11,9 @@ const { Content } = await render(g);
   <section class="page"><div class="wrap prose">
     <p class="eyebrow"><a href="/onboarding">Onboarding</a></p>
     <h1>{g.data.title}</h1>
+    {g.data.stats.length > 0 && <div class="stats"><div class="wrap">
+      {g.data.stats.map((s) => <div class="stat"><strong>{s.value}</strong><span>{s.label}</span></div>)}
+    </div></div>}
     <Content />
   </div></section>
 </Base>

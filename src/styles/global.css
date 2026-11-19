@@ -70,13 +70,20 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); outl
 .card p { color: var(--muted); margin: 0; }
 .prose { max-width: 70ch; }
 .prose table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: .95rem; }
-.prose th, .prose td { text-align: left; padding: .55em .8em; border-bottom: 1px solid rgba(255,255,255,.12); vertical-align: top; }
+.prose th, .prose td { overflow-wrap: normal; text-align: left; padding: .55em .8em; border-bottom: 1px solid rgba(255,255,255,.12); vertical-align: top; }
 .prose th { font-family: var(--display); text-transform: uppercase; letter-spacing: .06em; color: var(--gold); border-bottom: 2px solid var(--teal); }
 .prose h3 { color: #fff; font-size: 1.2rem; margin-top: 1.6em; }
 .prose strong { color: #fff; }
 .prose { overflow-wrap: anywhere; }
 .prose :is(h2, h3) { scroll-margin-top: 90px; }
 .prose h2 { color: var(--gold); margin-top: 2em; font-size: 1.6rem; }
+.prose .stats { margin: 1.5rem 0 2rem; }
+.prose .stats .wrap { width: auto; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.prose .stat { padding: 1.2rem 1rem; }
+.prose .stat strong { font-size: 2rem; }
+.prose img { width: 100%; height: auto; margin: 1.2rem 0; }
+.prose .contains-task-list { list-style: none; padding-left: 0; }
+.prose .task-list-item input { width: auto; margin: 0 .6em 0 0; accent-color: var(--gold); }
 
 footer .foot-patch { margin-bottom: 1rem; }
 footer { padding: 3rem 0; color: var(--muted); font-size: .85rem; border-top: 1px solid rgba(255,255,255,.08); }

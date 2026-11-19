@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" font-family="Oswald, 'Arial Narrow', sans-serif" role="img" aria-labelledby="t">
+  <title id="t">48 required drills plus up to 84 additional drills makes a maximum of 132 drills a year.</title>
+  <rect width="480" height="120" fill="#101820"/>
+  <!-- scale: x = 20 + drills * 3 -->
+  <rect x="20" y="28" width="144" height="44" fill="#006778"/>
+  <rect x="165" y="29" width="251" height="42" fill="#d7a22a" fill-opacity=".15" stroke="#d7a22a" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="92" y="56" fill="#fff" font-size="18" text-anchor="middle">48</text>
+  <text x="290.5" y="56" fill="#d7a22a" font-size="18" text-anchor="middle">UP TO 84</text>
+  <text x="424" y="58" fill="#fff" font-size="22">132</text>
+  <g fill="#9aa8b1" font-size="14" text-anchor="middle">
+    <text x="92" y="96">REQUIRED (IDT)</text>
+    <text x="290.5" y="96">EXTRA: AFTP · ATP · RMP</text>
+  </g>
+</svg>

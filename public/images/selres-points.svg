@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 140" font-family="Oswald, 'Arial Narrow', sans-serif" role="img" aria-labelledby="t">
+  <title id="t">A typical year: 15 free points, plus 48 for drills, plus 12 for AT, totals 75 points. 50 makes a good year.</title>
+  <rect width="480" height="140" fill="#101820"/>
+  <!-- scale: x = 20 + points * 5.2 -->
+  <rect x="20" y="44" width="78" height="44" fill="#006778" opacity=".55"/>
+  <rect x="98" y="44" width="249.6" height="44" fill="#006778"/>
+  <rect x="347.6" y="44" width="62.4" height="44" fill="#d7a22a"/>
+  <g font-size="18" text-anchor="middle">
+    <text x="59" y="72" fill="#fff">+15</text>
+    <text x="222.8" y="72" fill="#fff">+48</text>
+    <text x="378.8" y="72" fill="#101820">+12</text>
+  </g>
+  <text x="420" y="74" fill="#fff" font-size="22">= 75</text>
+  <line x1="280" y1="32" x2="280" y2="100" stroke="#fff" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="280" y="24" fill="#fff" font-size="15" text-anchor="middle" letter-spacing="1">50 = GOOD YEAR</text>
+  <g fill="#9aa8b1" font-size="14" text-anchor="middle">
+    <text x="59" y="118">FREE</text>
+    <text x="222.8" y="118">DRILLS</text>
+    <text x="378.8" y="118">AT DAYS</text>
+  </g>
+</svg>

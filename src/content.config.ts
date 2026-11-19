@@ -8,6 +8,7 @@ const onboarding = defineCollection({
     title: z.string(),
     summary: z.string(),
     order: z.number().default(99),
+    stats: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
   }),
 });
 
